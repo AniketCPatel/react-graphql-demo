@@ -7,8 +7,7 @@ const GET_COUNTRIES = gql`
     countries {
       name
       capital
-      population
-      area
+      currency
       languages {
         name
       }
@@ -29,8 +28,7 @@ const CountryList = () => {
         <div key={country.name}>
           <h3>{country.name}</h3>
           <p>Capital: {country.capital}</p>
-          <p>Population: {country.population}</p>
-          <p>Area: {country.area}</p>
+          <p>Currency: {country.currency}</p>
           <p>
             Languages: {country.languages.map((lang) => lang.name).join(", ")}
           </p>

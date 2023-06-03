@@ -7,8 +7,7 @@ const GET_COUNTRY_DETAILS = gql`
     country(name: $name) {
       name
       capital
-      population
-      area
+      currency
       languages {
         name
       }
@@ -38,8 +37,7 @@ const CountryDetails = ({ countryName }) => {
       <h2>{country.name}</h2>
       <img src={country.flag.svgFile} alt={country.name} />
       <p>Capital: {country.capital}</p>
-      <p>Population: {country.population}</p>
-      <p>Area: {country.area}</p>
+      <p>Currency: {country.currency}</p>
       <p>Languages: {country.languages.map((lang) => lang.name).join(", ")}</p>
       <p>
         Currencies:{" "}
