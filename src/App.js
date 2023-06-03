@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "./apollo";
+import CountryList from "./CountryList";
+import CountryDetails from "./CountryDetails";
 
 function App() {
+  const [selectedCountry, setSelectedCountry] = useState(null);
+
+  const handleCountryClick = (countryName) => {
+    setSelectedCountry(countryName);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={ApolloClient}>
+      <div className="App">
+        <CountryList handleCountryClick={handleCountryClick} />
+        {selectedCountry && <CountryDetails countryName={selectedCountry} />}
+      </div>
+    </ApolloProvider>
   );
 }
 
